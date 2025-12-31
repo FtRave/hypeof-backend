@@ -15,14 +15,13 @@ app.post('/contact', async (req, res) => {
     }
 
     const transporter = nodemailer.createTransport({
-      host: 'smtp.hostinger.com',
-      port: 465,
-      secure: true,
+      service: 'gmail',
       auth: {
-        user: 'hello@hypeof.in',
-        pass: process.env.EMAIL_PASSWORD,
+        user: process.env.SMTP_USER,
+        pass: process.env.SMTP_PASS,
       },
     });
+
 
     await transporter.sendMail({
       from: `"HypeOf Contact" <hello@hypeof.in>`,
